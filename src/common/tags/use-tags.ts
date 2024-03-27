@@ -6,7 +6,7 @@ export const getTagsKey = ["tags"];
 export const useTags = (): UseTagsReturn => {
   const tagsQuery = useQuery({
     queryKey: getTagsKey,
-    queryFn: getTags,
+    queryFn: async () => await getTags(),
   });
 
   return {
