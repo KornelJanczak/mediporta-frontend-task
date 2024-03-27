@@ -1,11 +1,12 @@
 import axios, { AxiosError } from "axios";
+import { type TagsResponse } from "./use-tags";
 
 const API_URL =
   "https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow";
 
 export const getTags = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response: TagsResponse = await axios.get(API_URL);
 
     return response;
   } catch (error) {
