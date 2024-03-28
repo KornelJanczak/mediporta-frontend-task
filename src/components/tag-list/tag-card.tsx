@@ -1,4 +1,5 @@
 import { TagListProps } from ".";
+import { Skeleton } from "../ui/skeleton";
 
 const capitalizeFirstLetter = (tagName: string): string =>
   tagName.length > 0
@@ -21,3 +22,11 @@ export default function TagCard({ name, count }: TagListProps) {
     </div>
   );
 }
+
+export const TagCardSkeleton = () => {
+  return (
+    <div className="flex justify-between items-center p-2">
+      <Skeleton className="w-full h-14" />
+    </div>
+  );
+};
