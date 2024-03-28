@@ -8,7 +8,7 @@ export const getTags = async () => {
   try {
     const response: TagsResponse = await axios.get(API_URL);
 
-    console.log(response, "RESPONSE");
+    // console.log(response, "RESPONSE");
 
     return response;
   } catch (error) {
