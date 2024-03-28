@@ -8,33 +8,29 @@ export interface TagProps {}
 
 export default function TagList() {
   const { tagsList, setTagsList } = useTagsList();
-  const { data, status } = useTags();
+  const { tags, status } = useTags();
 
   const isSuccess = status === "success";
   const isError = status === "error";
 
-  useEffect(() => {
-    if (isSuccess && data) {
-      // console.log(data);
+  // useEffect(() => {
+  //   if (isSuccess && tags) {
+  //     setTagsList(tags.items);
+  //   }
+  // }, [tags, isError, isSuccess, setTagsList, tagsList]);
 
-      setTagsList(data);
-    }
+  console.log(tags);
 
-    if (isError) {
-      setTagsList(null);
-    }
-  }, [data, isError, isSuccess, setTagsList]);
-
-  if (!tagsList) {
+  if (!tags) {
     return <div></div>;
   }
 
-  if (tagsList) {
-    console.log(tagsList);
+  if (tags) {
+    // console.log(tags.items);
 
     return (
       <Container>
-        {tagsList.map(({ name }) => (
+        {tags.items.map(({ name }) => (
           <TagCard key={name} />
         ))}
       </Container>

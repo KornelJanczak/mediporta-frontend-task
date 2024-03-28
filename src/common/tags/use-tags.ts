@@ -10,7 +10,7 @@ export const useTags = (): UseTagsReturn => {
   });
 
   return {
-    tags: tagsQuery.data,
+    tags: tagsQuery.data || undefined,
     ...tagsQuery,
   };
 };
@@ -19,7 +19,7 @@ type UseTagsReturn = UseQueryResult<TagsResponse, unknown> & {
   tags: TagsResponse | undefined;
 };
 
-type Tag = {
+export type Tag = {
   has_synonyms: boolean;
   is_moderator_only: boolean;
   is_required: boolean;
@@ -27,15 +27,9 @@ type Tag = {
   name: string;
 };
 
-type TagCollective = {
-  tags: string[];
-  external_links: { type: string; link: string }[];
-  description: string;
-  link: string;
-  name: string;
-  slug: string;
-};
-
-type Tags = (Tag | TagCollective)[];
-
-export type TagsResponse = Tags | null;
+export type TagsResponse = {
+  has_more: true;
+  items: Tag[];
+  quota_max: number;
+  quota_remaning: number;
+} | null;

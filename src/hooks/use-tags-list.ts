@@ -1,10 +1,11 @@
-import { TagsResponse } from "@/common/tags/use-tags";
+import {  type Tag } from "@/common/tags/use-tags";
 import { create } from "zustand";
 
 interface TagsListState {
-  tagsList: TagsResponse;
-  setTagsList: (tagList: TagsResponse) => void;
+  tagsList: Tag[] | null;
+  setTagsList: (tagList: Tag[] | null) => void;
 }
+
 
 export const useTagsList = create<TagsListState>()((set) => ({
   tagsList: [],
