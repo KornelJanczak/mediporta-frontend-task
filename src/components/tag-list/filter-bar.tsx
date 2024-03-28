@@ -16,15 +16,19 @@ const selectOptions = [
 
 export default function FilterBar() {
   return (
-    <div className="flex justify-between items-center w-full">
-      <Input placeholder="Search tags" type="number" />
+    <div className="flex justify-between items-center gap-x-5 w-full">
+      <Input
+        placeholder="Number of tags"
+        type="number"
+        className="text-text focus:border-primary"
+      />
       <Select>
-        <SelectTrigger className="">
-          <SelectValue placeholder="Theme" />
+        <SelectTrigger className="focus:border-primary">
+          <SelectValue placeholder="Sort by" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="border-0">
           {selectOptions.map(({ label, value }) => (
-            <SelectItem key={value} value={value}>
+            <SelectItem key={value} value={value} className="hover:bg-primary">
               {label}
             </SelectItem>
           ))}

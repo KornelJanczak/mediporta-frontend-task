@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import TagsContainer from "./tags-container";
 import TagCard from "./tag-card";
 import FilterBar from "./filter-bar";
+import { Card, CardContent, CardHeader } from "../ui/card";
 
 export interface TagListProps {
   name: string;
@@ -33,13 +34,17 @@ export default function TagList() {
     // console.log(tags.items);
 
     return (
-      <div className="container py-9 max-w-96 bg-card">
-        <FilterBar />
-        <TagsContainer>
-          {tags.items.slice(0, 14).map(({ name, count }) => (
-            <TagCard key={name} name={name} count={count} />
-          ))}
-        </TagsContainer>
+      <div className="m-4">
+        <Card className="container max-w-96 border-0">
+          <CardHeader className="px-2">
+            <FilterBar />
+          </CardHeader>
+          <CardContent className="flex flex-col px-2">
+            {tags.items.slice(0, 14).map(({ name, count }) => (
+              <TagCard key={name} name={name} count={count} />
+            ))}
+          </CardContent>
+        </Card>
       </div>
     );
   }
