@@ -1,10 +1,14 @@
 import { useTagsList } from "@/hooks/use-tags-list";
 import { useTags } from "@/common/tags/use-tags";
 import { useEffect } from "react";
-import Container from "./container";
+import TagsContainer from "./tags-container";
 import TagCard from "./tag-card";
+import FilterBar from "./filter-bar";
 
-export interface TagProps {}
+export interface TagListProps {
+  name: string;
+  count: number;
+}
 
 export default function TagList() {
   const { tagsList, setTagsList } = useTagsList();
@@ -29,11 +33,14 @@ export default function TagList() {
     // console.log(tags.items);
 
     return (
-      <Container>
-        {tags.items.map(({ name }) => (
-          <TagCard key={name} />
-        ))}
-      </Container>
+      <div className="container py-9 max-w-96 bg-card">
+        <FilterBar />
+        <TagsContainer>
+          {tags.items.slice(0, 14).map(({ name, count }) => (
+            <TagCard key={name} name={name} count={count} />
+          ))}
+        </TagsContainer>
+      </div>
     );
   }
 }
