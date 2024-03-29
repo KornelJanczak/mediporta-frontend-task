@@ -1,4 +1,3 @@
-import { Input } from "../ui/input";
 import {
   Select,
   SelectContent,
@@ -6,13 +5,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useTagsList } from "@/hooks/use-tags-list";
+import { Input } from "../ui/input";
+import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
+import { type SortOptions } from "@/hooks/use-tags-list/helpers/sort-tags";
 
 const selectOptions = [
-  { label: "Most related posts", value: "most-posts" },
-  { label: "Least related posts", value: "least-posts" },
-  { label: "A", value: "a" },
-  { label: "Z", value: "z" },
+  { label: "Most related posts", value: "most-related-posts" },
+  { label: "Least related posts", value: "least-related-posts" },
+  { label: "A", value: "alphabetical-asc" },
+  { label: "Z", value: "alphabetical-desc" },
 ];
 
 export default function FilterBar() {
@@ -22,7 +23,7 @@ export default function FilterBar() {
     setNumberOfTags(Number(e.target.value));
   };
 
-  const handleSortOption = (selectValue: string) => {
+  const handleSortOption = (selectValue: SortOptions) => {
     setSortOption(selectValue);
   };
 
@@ -32,13 +33,17 @@ export default function FilterBar() {
         onChange={handleNumberOfTags}
         placeholder="Number of tags"
         type="number"
+        min={0}
         className="text-text focus:border-primary"
       />
-      <Select onValueChange={handleSortOption}>
+      <Select
+        onValueChange={handleSortOption}
+        defaultValue="most-related-posts"
+      >
         <SelectTrigger className="focus:border-primary">
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
-        <SelectContent onChange={(e) => console.log(e)} className="border-0">
+        <SelectContent className="border-0" align="end">
           {selectOptions.map(({ label, value }) => (
             <SelectItem key={value} value={value} className="hover:bg-primary">
               {label}
