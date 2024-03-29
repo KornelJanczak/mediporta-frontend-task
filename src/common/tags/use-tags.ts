@@ -10,7 +10,7 @@ export const useTags = (): UseTagsReturn => {
   });
 
   return {
-    tags: tagsQuery.data || undefined,
+    tags: tagsQuery.data,
     ...tagsQuery,
   };
 };
