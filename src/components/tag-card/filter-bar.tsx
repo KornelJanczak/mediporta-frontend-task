@@ -17,7 +17,7 @@ const selectOptions = [
 ];
 
 export default function FilterBar() {
-  const { setNumberOfTags, setSortOption } = useTagsList();
+  const { setNumberOfTags, setSortOption, numberOfTags } = useTagsList();
 
   const handleNumberOfTags = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNumberOfTags(Number(e.target.value));
@@ -32,9 +32,10 @@ export default function FilterBar() {
       <Input
         onChange={handleNumberOfTags}
         placeholder="Number of tags"
+        className="text-text focus:border-primary"
         type="number"
         min={0}
-        className="text-text focus:border-primary"
+        defaultValue={numberOfTags}
       />
       <Select
         onValueChange={handleSortOption}

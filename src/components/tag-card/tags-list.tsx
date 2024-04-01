@@ -3,6 +3,7 @@ import TagsSkeleton from "./tags-skeleton";
 import ErrorMessage from "../error-message";
 import { Tag } from "@/common/tags/use-tags";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
+import PropTypes from "prop-types";
 
 interface TagListProps {
   tags: Tag[];
@@ -37,3 +38,10 @@ export default function TagsList({
       </ul>
     );
 }
+
+TagsList.propTypes = {
+  tags: PropTypes.array.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+};
