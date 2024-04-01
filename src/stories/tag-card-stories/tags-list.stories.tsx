@@ -1,9 +1,9 @@
-import Tags from "@/components/tag-card/tags";
+import TagsList from "@/components/tag-card/tags-list";
 import * as TagStories from "./tag-item.stories";
 
 export default {
-  component: Tags,
-  title: "Tags",
+  component: TagsList,
+  title: "Tags List",
   tags: ["autodocs"],
 };
 

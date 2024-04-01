@@ -1,16 +1,17 @@
 import { cn } from "@/lib/utils";
+import PropTypes from "prop-types";
 
-interface NoResultProps {
+interface ErrorMessageProps {
   className?: string;
   title: string;
   description: string;
 }
 
-export default function NoResult({
+export default function ErrorMessage({
   className,
   title,
   description,
-}: NoResultProps) {
+}: ErrorMessageProps) {
   return (
     <div
       className={cn(
@@ -23,3 +24,9 @@ export default function NoResult({
     </div>
   );
 }
+
+ErrorMessage.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};

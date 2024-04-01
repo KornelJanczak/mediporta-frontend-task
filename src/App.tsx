@@ -1,10 +1,10 @@
-import TagCard from "./components/tag-card";
+import TagsCard from "./components/tag-card";
 import { TanstackProvider } from "./providers/tanstack-provider";
 
 function App() {
   return (
     <TanstackProvider>
-      <TagCard />
+      <TagsCard />
     </TanstackProvider>
   );
 }

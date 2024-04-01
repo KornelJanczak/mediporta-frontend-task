@@ -1,11 +1,11 @@
-import { TagListProps } from ".";
+import { TagsListProps } from ".";
 import PropTypes from "prop-types";
 const capitalizeFirstLetter = (tagName: string): string =>
   tagName.length > 0
     ? tagName.charAt(0).toUpperCase() + tagName.slice(1)
     : tagName;
 
-export default function TagItem({ name, count }: TagListProps) {
+export default function TagItem({ name, count }: TagsListProps) {
   const tagName = capitalizeFirstLetter(name);
   const formatCountNumber = count.toLocaleString();
 
