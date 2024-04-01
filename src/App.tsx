@@ -4,7 +4,9 @@ import { TanstackProvider } from "./providers/tanstack-provider";
 function App() {
   return (
     <TanstackProvider>
-      <TagsCard />
+      <main>
+        <TagsCard />
+      </main>
     </TanstackProvider>
   );
 }
