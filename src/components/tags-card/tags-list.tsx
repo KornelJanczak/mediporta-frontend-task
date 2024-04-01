@@ -31,7 +31,7 @@ export default function TagsList({
 
   if (isSuccess)
     return (
-      <ul className="flex flex-col">
+      <ul className="flex flex-col gap-y-4">
         {slicedTagList.map(({ name, count }) => (
           <TagItem key={name} name={name} count={count} />
         ))}

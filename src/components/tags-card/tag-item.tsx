@@ -10,7 +10,7 @@ export default function TagItem({ name, count }: TagsListProps) {
   const formatCountNumber = count.toLocaleString();
 
   return (
-    <li className="flex justify-between items-center p-2 border-border border rounded-md bg-card ">
+    <li className="flex justify-between items-center px-4 py-1.5 border-border border rounded-md bg-card ">
       <h4 className="px-1 py-0.5 rounded-md text-sm text-primary bg-primary-foreground cursor-pointer">
         {tagName}
       </h4>
