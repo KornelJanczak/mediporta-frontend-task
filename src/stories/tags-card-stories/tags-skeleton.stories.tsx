@@ -1,4 +1,4 @@
-import TagsSkeleton from "@/components/tag-card/tags-skeleton";
+import TagsSkeleton from "@/components/tags-card/tags-skeleton";
 
 export default {
   component: TagsSkeleton,

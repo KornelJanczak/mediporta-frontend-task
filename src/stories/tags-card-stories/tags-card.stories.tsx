@@ -1,13 +1,11 @@
-import TagCard from "@/components/tag-card";
+import TagsCard from "@/components/tags-card";
 import { TanstackProvider } from "@/providers/tanstack-provider";
 import { Meta } from "@storybook/react";
 
-const meta: Meta<typeof TagCard> = {
-  component: TagCard,
+const meta: Meta<typeof TagsCard> = {
+  component: TagsCard,
   title: "Tag card",
-  decorators: [
-    (Story) => <TanstackProvider> {Story()} </TanstackProvider>,
-  ],
+  decorators: [(Story) => <TanstackProvider> {Story()} </TanstackProvider>],
   tags: ["autodocs"],
 };
 

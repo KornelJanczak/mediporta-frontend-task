@@ -1,4 +1,4 @@
-import TagItem from "@/components/tag-card/tag-item";
+import TagItem from "@/components/tags-card/tag-item";
 
 export default {
   component: TagItem,

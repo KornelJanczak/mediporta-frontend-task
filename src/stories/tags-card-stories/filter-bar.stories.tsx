@@ -1,4 +1,4 @@
-import FilterBar from "@/components/tag-card/filter-bar";
+import FilterBar from "@/components/tags-card/filter-bar";
 
 export default {
   component: FilterBar,

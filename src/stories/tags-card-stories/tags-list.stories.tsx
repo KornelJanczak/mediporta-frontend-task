@@ -1,4 +1,4 @@
-import TagsList from "@/components/tag-card/tags-list";
+import TagsList from "@/components/tags-card/tags-list";
 import * as TagStories from "./tag-item.stories";
 
 export default {

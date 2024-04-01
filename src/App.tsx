@@ -1,4 +1,4 @@
-import TagsCard from "./components/tag-card";
+import TagsCard from "./components/tags-card";
 import { TanstackProvider } from "./providers/tanstack-provider";
 
 function App() {
