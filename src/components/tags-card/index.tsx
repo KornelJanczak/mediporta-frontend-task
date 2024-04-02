@@ -4,6 +4,7 @@ import FilterBar from "./filter-bar";
 import { useTags } from "@/common/tags/use-tags";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
 import { useEffect } from "react";
+import TagsPagination from "./tags-pagination";
 
 export interface TagsListProps {
   name: string;
@@ -25,10 +26,14 @@ export default function TagsCard() {
   }, [data, setTagsList, tags]);
 
   return (
-    <div className="mx-6 my-10 md:my-24">
-      <Card className="container max-w-96 border-0 md:max-w-xl">
-        <CardHeader className="px-0">
-          <FilterBar />
+    <div className="mx-4 my-10 md:my-24">
+      <Card className="container max-w-96 border-0 px-4 md:max-w-xl">
+        <CardHeader className="justify-content items-center px-0 gap-y-6 pb-2">
+          <h1 className="text-xl">Tags List</h1>
+          <div className="w-full">
+            <FilterBar />
+            <TagsPagination />
+          </div>
         </CardHeader>
         <CardContent className="px-0">
           <TagsList

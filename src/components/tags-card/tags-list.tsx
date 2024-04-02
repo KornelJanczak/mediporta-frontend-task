@@ -5,7 +5,7 @@ import { Tag } from "@/common/tags/use-tags";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
 import PropTypes from "prop-types";
 
-interface TagListProps {
+interface TagsListProps {
   tags: Tag[];
   isPending: boolean;
   isSuccess: boolean;
@@ -17,10 +17,10 @@ export default function TagsList({
   isPending,
   isError,
   isSuccess,
-}: TagListProps) {
-  const { numberOfTags } = useTagsList();
+}: TagsListProps) {
+  const { numberOfTags, startIndex, endIndex } = useTagsList();
 
-  const slicedTagList = tags.slice(0, numberOfTags);
+  const slicedTagList = tags.slice(startIndex, endIndex);
 
   const skeletonLength = numberOfTags - 1;
 
@@ -31,7 +31,7 @@ export default function TagsList({
 
   if (isSuccess)
     return (
-      <ul className="flex flex-col gap-y-4">
+      <ul aria-live="polite" className="flex flex-col gap-y-4">
         {slicedTagList.map(({ name, count }) => (
           <TagItem key={name} name={name} count={count} />
         ))}
