@@ -17,23 +17,11 @@ export default function TagsPagination() {
       startIndex - numberOfTags < 0 ? 0 : startIndex - numberOfTags
     );
     setEndIndex(endIndex - numberOfTags);
-
-    console.log("HANDLE PREVIOUS");
-
-    console.log(startIndex - numberOfTags, "STARTINDEX");
-    console.log(endIndex - numberOfTags, "END INDEX");
   };
 
   const handleNext = () => {
     setStartIndex(startIndex + numberOfTags);
     setEndIndex(endIndex + numberOfTags);
-
-    console.log("HANDLE NEXT");
-
-    console.log(numberOfTags, "NUMBER OF TAGS");
-
-    console.log(startIndex + numberOfTags, "STARTINDEX");
-    console.log(endIndex + numberOfTags, "END INDEX");
   };
 
   const isFirstPage = startIndex <= 0;
