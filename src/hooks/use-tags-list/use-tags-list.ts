@@ -25,8 +25,10 @@ export const useTagsList = create<TagsListState>()((set) => ({
   setTagsList: (tagsList) => set({ tagsList }),
   setNumberOfTags: (numberOfTags) =>
     set((state) => {
-      const endIndex = state.startIndex + numberOfTags;
-      return { ...state, numberOfTags, endIndex };
+      let endIndex = numberOfTags;
+      endIndex =
+        endIndex > state.tagsList.length ? state.tagsList.length : endIndex;
+      return { ...state, numberOfTags, endIndex, startIndex: 0 };
     }),
   setSortOption: (sortOption: SortOptions) =>
     set((state) => {

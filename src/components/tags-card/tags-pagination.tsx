@@ -30,6 +30,8 @@ export default function TagsPagination() {
 
     console.log("HANDLE NEXT");
 
+    console.log(numberOfTags, "NUMBER OF TAGS");
+
     console.log(startIndex + numberOfTags, "STARTINDEX");
     console.log(endIndex + numberOfTags, "END INDEX");
   };
