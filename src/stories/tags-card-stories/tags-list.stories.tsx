@@ -1,18 +1,33 @@
 import TagsList from "@/components/tags-card/tags-list";
 import * as TagStories from "./tag-item.stories";
-
-export default {
-  component: TagsList,
-  title: "Tags List",
-  tags: ["autodocs"],
-};
+import type { Meta } from "@storybook/react";
 
 const tags = [
   { ...TagStories.Default.args, name: "JavaScript", count: 20000 },
   { ...TagStories.Default.args, name: "TypeScript", count: 10000 },
   { ...TagStories.Default.args, name: "React", count: 5000 },
   { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
+  { ...TagStories.Default.args, name: "Vue", count: 3000 },
 ];
+
+const meta: Meta<typeof TagsList> = {
+  component: TagsList,
+  title: "Tags List",
+  tags: ["autodocs"],
+};
+
+export default meta;
 
 export const Default = {
   args: {
@@ -25,7 +40,7 @@ export const Default = {
 
 export const Error = {
   args: {
-    tags,
+    // tags,
     isPending: false,
     isError: true,
     isSuccess: false,
@@ -34,7 +49,7 @@ export const Error = {
 
 export const Pending = {
   args: {
-    tags,
+    // tags,
     isPending: true,
     isError: false,
     isSuccess: false,
