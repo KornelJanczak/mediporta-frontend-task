@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import sortTags from "@/helpers/sort-tags";
 
 interface TagsListProps {
-  tags?: Tag[] | null;
+  tags: Tag[] | null;
   isPending: boolean;
   isSuccess: boolean;
   isError: boolean;
@@ -25,7 +25,9 @@ export default function TagsList({
   const startIndex = currentPage * tagsPerPage;
   const endIndex = startIndex + tagsPerPage;
 
-  if (isError) {
+
+
+  if (isError || !tags) {
     return <ErrorMessage title="Error" description="Failed to load tags" />;
   }
 
@@ -38,9 +40,6 @@ export default function TagsList({
 
     const sortedTags = sortTags(slicedTagList, sortOption);
 
-    console.log(sortedTags);
-    
-
     return (
       <ul aria-live="polite" className="flex flex-col gap-y-4">
         {sortedTags.map(({ name, count }) => (
@@ -52,7 +51,6 @@ export default function TagsList({
 }
 
 TagsList.propTypes = {
-  tags: PropTypes.array.isRequired,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   isError: PropTypes.bool.isRequired,
