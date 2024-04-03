@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import sortTags from "@/helpers/sort-tags";
 
 interface TagsListProps {
-  tags: Tag[] | null;
+  tags?: Tag[];
   isPending: boolean;
   isSuccess: boolean;
   isError: boolean;
