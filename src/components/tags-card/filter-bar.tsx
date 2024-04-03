@@ -10,7 +10,7 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "@/components/ui/label";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
-import { type SortOptions } from "@/hooks/use-tags-list/helpers/sort-tags";
+import { type SortOptions } from "@/helpers/sort-tags";
 import { SelectGroup } from "@radix-ui/react-select";
 
 const selectOptions = [
@@ -21,12 +21,10 @@ const selectOptions = [
 ];
 
 export default function FilterBar() {
-  const { setNumberOfTags, setSortOption, numberOfTags } =
-    useTagsList();
+  const { tagsPerPage, setTagsPerPage, setSortOption } = useTagsList();
 
   const handleNumberOfTags = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNumberOfTags(Number(e.target.value));
-   
+    setTagsPerPage(Number(e.target.value));
   };
 
   const handleSortOption = (selectValue: SortOptions) => {
@@ -47,7 +45,7 @@ export default function FilterBar() {
           type="number"
           min={1}
           max={30}
-          defaultValue={numberOfTags}
+          defaultValue={tagsPerPage}
         />
       </div>
       <Select onValueChange={handleSortOption}>

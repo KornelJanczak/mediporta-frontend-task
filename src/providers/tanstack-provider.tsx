@@ -5,13 +5,7 @@ export const TanstackProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60_000,
-      },
-    },
-  });
+  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

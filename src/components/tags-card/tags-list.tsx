@@ -4,9 +4,10 @@ import ErrorMessage from "../error-message";
 import { Tag } from "@/common/tags/use-tags";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
 import PropTypes from "prop-types";
+import sortTags from "@/helpers/sort-tags";
 
 interface TagsListProps {
-  tags: Tag[];
+  tags?: Tag[] | null;
   isPending: boolean;
   isSuccess: boolean;
   isError: boolean;
@@ -18,25 +19,36 @@ export default function TagsList({
   isError,
   isSuccess,
 }: TagsListProps) {
-  const { numberOfTags, startIndex, endIndex } = useTagsList();
+  const { tagsPerPage, currentPage, sortOption } = useTagsList();
 
-  const slicedTagList = tags.slice(startIndex, endIndex);
+  const skeletonLength = tagsPerPage - 1;
+  const startIndex = currentPage * tagsPerPage;
+  const endIndex = startIndex + tagsPerPage;
 
-  const skeletonLength = numberOfTags - 1;
-
-  if (isError)
+  if (isError) {
     return <ErrorMessage title="Error" description="Failed to load tags" />;
+  }
 
-  if (isPending) return <TagsSkeleton length={skeletonLength} />;
+  if (isPending) {
+    return <TagsSkeleton length={skeletonLength} />;
+  }
 
-  if (isSuccess)
+  if (isSuccess && tags) {
+    const slicedTagList = tags.slice(startIndex, endIndex);
+
+    const sortedTags = sortTags(slicedTagList, sortOption);
+
+    console.log(sortedTags);
+    
+
     return (
       <ul aria-live="polite" className="flex flex-col gap-y-4">
-        {slicedTagList.map(({ name, count }) => (
+        {sortedTags.map(({ name, count }) => (
           <TagItem key={name} name={name} count={count} />
         ))}
       </ul>
     );
+  }
 }
 
 TagsList.propTypes = {

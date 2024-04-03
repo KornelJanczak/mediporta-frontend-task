@@ -11,9 +11,9 @@ export default function TagItem({ name, count }: TagsListProps) {
 
   return (
     <li className="flex justify-between items-center px-4 py-1.5 border-border border rounded-md bg-card ">
-      <h4 className="px-1 py-0.5 rounded-md text-sm text-primary bg-primary-foreground cursor-pointer">
+      <span className="px-1 py-0.5 rounded-md text-sm text-primary bg-primary-foreground">
         {tagName}
-      </h4>
+      </span>
       <div className="flex flex-col items-end text-sm sm:text-base">
         <p>Related posts:</p>
         <p>{formatCountNumber}</p>

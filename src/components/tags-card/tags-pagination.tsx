@@ -8,28 +8,21 @@ import {
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
 import { cn } from "@/lib/utils";
 
+const TAGS_LIMIT = 30;
+
 export default function TagsPagination() {
-  const { setStartIndex, setEndIndex, startIndex, endIndex, numberOfTags } =
-    useTagsList();
+  const { setCurrentPage, currentPage, tagsPerPage } = useTagsList();
 
-  const handlePrevious = () => {
-    setStartIndex(
-      startIndex - numberOfTags < 0 ? 0 : startIndex - numberOfTags
-    );
-    setEndIndex(endIndex - numberOfTags);
-  };
+  const startIndex = currentPage * tagsPerPage;
+  const endIndex = startIndex + tagsPerPage;
+  const MAX_PAGES = Math.ceil(TAGS_LIMIT / tagsPerPage);
 
-  const handleNext = () => {
-    setStartIndex(startIndex + numberOfTags);
-    setEndIndex(endIndex + numberOfTags);
-  };
+  const handlePrevious = () => setCurrentPage(Math.max(currentPage - 1, 0));
+
+  const handleNext = () => setCurrentPage(Math.min(currentPage + 1, MAX_PAGES));
 
   const isFirstPage = startIndex <= 0;
-  const isLastPage = endIndex >= 30;
-
-  console.log(endIndex);
-
-  console.log(isLastPage);
+  const isLastPage = endIndex >= TAGS_LIMIT;
 
   return (
     <Pagination className="items-center">
