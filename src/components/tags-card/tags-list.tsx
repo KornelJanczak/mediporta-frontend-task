@@ -25,9 +25,7 @@ export default function TagsList({
   const startIndex = currentPage * tagsPerPage;
   const endIndex = startIndex + tagsPerPage;
 
-
-
-  if (isError || !tags) {
+  if (isError) {
     return <ErrorMessage title="Error" description="Failed to load tags" />;
   }
 

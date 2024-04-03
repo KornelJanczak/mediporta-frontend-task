@@ -1,10 +1,4 @@
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
 import { cn } from "@/lib/utils";
 
@@ -24,28 +18,34 @@ export default function TagsPagination() {
   const isFirstPage = startIndex <= 0;
   const isLastPage = endIndex >= TAGS_LIMIT;
 
+  const buttonClassName =
+    "flex items-center justify-center cursor-pointer hover:text-primary hover:transition-all hover:duration-300";
+
   return (
-    <Pagination className="items-center">
-      <PaginationContent className="flex justify-between w-full py-4">
-        <PaginationItem>
-          <PaginationPrevious
-            onClick={handlePrevious}
-            className={cn(
-              "cursor-pointer",
-              isFirstPage && "pointer-events-none opacity-50"
-            )}
-          />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext
-            onClick={handleNext}
-            className={cn(
-              "cursor-pointer",
-              isLastPage && "pointer-events-none opacity-50"
-            )}
-          />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+    <div className="flex justify-between w-full py-4">
+      <button
+        aria-label="Go to previous page"
+        onClick={handlePrevious}
+        className={cn(
+          buttonClassName,
+          isFirstPage && "pointer-events-none opacity-50"
+        )}
+      >
+        <ChevronLeft className="h-4 w-4" />
+        <span>Previous</span>
+      </button>
+
+      <button
+        aria-label="Go to next page"
+        onClick={handleNext}
+        className={cn(
+          buttonClassName,
+          isLastPage && "pointer-events-none opacity-50"
+        )}
+      >
+        <span>Next</span>
+        <ChevronRight className="h-4 w-4" />
+      </button>
+    </div>
   );
 }
