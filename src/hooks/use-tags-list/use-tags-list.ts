@@ -12,9 +12,9 @@ type TagsState = {
 
 export const useTagsList = create<TagsState>()((set) => ({
   tagsPerPage: 10,
-  setTagsPerPage: (tagsPerPage) => set({ tagsPerPage }),
+  setTagsPerPage: (tagsPerPage) => set({ tagsPerPage, currentPage: 0 }),
   sortOption: "most-related-posts",
   setSortOption: (sortOption) => set({ sortOption }),
-  currentPage: 1,
+  currentPage: 0,
   setCurrentPage: (page) => set({ currentPage: page }),
 }));
