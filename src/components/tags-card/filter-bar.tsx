@@ -6,12 +6,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { Input } from "../ui/input";
 import { Label } from "@/components/ui/label";
+import { SelectGroup } from "@/components/ui/select";
 import { useTagsList } from "@/hooks/use-tags-list/use-tags-list";
 import { type SortOptions } from "@/helpers/sort-tags";
-import { SelectGroup } from "@radix-ui/react-select";
 
 const selectOptions = [
   { label: "Most related posts", value: "most-related-posts" },
